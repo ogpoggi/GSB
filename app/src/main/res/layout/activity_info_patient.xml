@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bastien.gsb.InfoPatient">
+
+    <TextView
+        android:id="@+id/tvInfoPatient"
+        android:layout_width="360dp"
+        android:layout_height="202dp"
+        android:width="220dp"
+        android:height="100dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+</android.support.constraint.ConstraintLayout>

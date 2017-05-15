@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_tevPrenom"
+        android:layout_alignBottom="@+id/list_item_btnEnvoie"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_dialog"
+        android:id="@+id/list_item_btnSupprimer"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_tevNom"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        android:id="@+id/list_item_btnEnvoie"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/list_item_btnSupprimer"
+        android:layout_toStartOf="@+id/list_item_btnSupprimer" />
+
+    <ImageButton
+        android:id="@+id/list_item_btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/list_item_btnEnvoie"
+        android:layout_toStartOf="@+id/list_item_btnEnvoie"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
+
+</RelativeLayout>
