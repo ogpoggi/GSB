@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             unMaladeBDD.ajoutMalade(unMalade);
             Toast.makeText(MainActivity.this,"Le malade a été ajouté avec succés" +" : "+ String.valueOf(unMaladeBDD.
                      nombreMalades())+" malades dans la base de données", Toast.LENGTH_SHORT).show();
-            Toast.makeText(MainActivity.this,"TEST="+MaBaseSQLite.CREATE_TABLE_MALADES,Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"TESsT="+MaBaseSQLite.CREATE_TABLE_MALADES,Toast.LENGTH_SHORT).show();
             editNomMalade.setText("");
             editPrenomMalade.setText("");
             editPoids.setText("");
