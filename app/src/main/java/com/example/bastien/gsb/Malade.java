@@ -23,8 +23,8 @@ public class Malade implements Serializable{
     private String nom;
     private String prenom;
     private double glycemie;
-    private int poids;
-    private int taille;
+    private double poids;
+    private double taille;
 
     /**
      * Constructeur classe Malade
@@ -32,7 +32,7 @@ public class Malade implements Serializable{
      * @param unPrenom String
      * @param uneGlycemie double
      */
-    public Malade(int id, String unNom, String unPrenom, double uneGlycemie, int unPoids, int uneTaille) {
+    public Malade(int id, String unNom, String unPrenom, double uneGlycemie, double unPoids, double uneTaille) {
         this.id = id;
         this.nom = unNom;
         this.prenom = unPrenom;
@@ -86,11 +86,11 @@ public class Malade implements Serializable{
     }
 
 
-    public int getPoids() {
+    public double getPoids() {
         return this.poids;
     }
 
-    public int getTaille() {
+    public double getTaille() {
         return this.taille;
     }
 

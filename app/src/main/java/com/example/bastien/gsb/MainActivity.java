@@ -149,12 +149,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             String nom = editNomMalade.getText().toString();
             String prenom = editPrenomMalade.getText().toString();
             Double glyc = Double.parseDouble(editGlycemie.getText().toString());
-            int poids = Integer.parseInt(editPoids.getText().toString());
-            int taille = Integer.parseInt(editTaille.getText().toString());
+            double poids = Double.parseDouble(editPoids.getText().toString());
+            double taille = Double.parseDouble(editTaille.getText().toString());
             Malade unMalade = new Malade(1,nom, prenom, glyc, poids, taille);
             unMaladeBDD.ajoutMalade(unMalade);
             Toast.makeText(MainActivity.this,"Le malade a été ajouté avec succés" +" : "+ String.valueOf(unMaladeBDD.
                      nombreMalades())+" malades dans la base de données", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"TEST="+MaBaseSQLite.CREATE_TABLE_MALADES,Toast.LENGTH_SHORT).show();
             editNomMalade.setText("");
             editPrenomMalade.setText("");
             editPoids.setText("");

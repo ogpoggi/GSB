@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class MaladesBDD {
-    private static final int VERSION_BDD = 1;
+    private static final int VERSION_BDD = 2;
     private static final String NOM_BDD = "bddMalades.db";
     private static final String TABLE_MALADES = "table_malades";
 
@@ -65,7 +65,7 @@ public class MaladesBDD {
         Cursor leCurseur = bdd.rawQuery("select * from "+TABLE_MALADES, null);
         leCurseur.moveToFirst();
         while ( !leCurseur.isAfterLast()){
-            Malade malade = new Malade(leCurseur.getInt(0),leCurseur.getString(1),leCurseur.getString(2),leCurseur.getDouble(3),leCurseur.getInt(4),leCurseur.getInt(5));
+            Malade malade = new Malade(leCurseur.getInt(0),leCurseur.getString(1),leCurseur.getString(2),Double.valueOf(leCurseur.getString(3)),Double.valueOf(leCurseur.getString(4)),Double.valueOf(leCurseur.getString(5)));
             LesMalades.add(malade);
             leCurseur.moveToNext();
         }
