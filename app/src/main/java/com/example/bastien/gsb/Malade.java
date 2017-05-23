@@ -143,7 +143,7 @@ public class Malade implements Serializable{
     }
 
     public String getInfoPatient(){
-        return  "ID : "+id +" "+"NOM: "+nom +"  " +prenom + "  "+"Glycemie: "+ glycemie +"  "+"Poids: "+poids+"  "+"Taille: "+taille;
+        return  "ID : "+id +" "+"NOM: "+nom +"  " +prenom + "  "+"Glycemie: "+ glycemie +" Insuline :  "+insuline+"  "+"Poids: "+poids+"  "+"Taille: "+taille;
     }
     @Override
     public String toString() {
