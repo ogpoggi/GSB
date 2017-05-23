@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnAfficherInsuline"
-        android:layout_below="@+id/tvGlycemie"
+        android:layout_alignBottom="@+id/editGlycemie"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvInsuline"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="11dp"
         android:layout_below="@+id/btnAfficherInsuline"
         android:layout_alignLeft="@+id/btnAfficherInsuline"
         android:layout_alignStart="@+id/btnAfficherInsuline" />
@@ -66,6 +66,7 @@
         android:ems="10"
         android:id="@+id/editNomMalade"
         android:hint="Nom"
+        android:layout_alignBaseline="@+id/textView"
         android:layout_alignBottom="@+id/textView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -117,7 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/tvInsuline"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -151,9 +153,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnAjoutMalade"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/txtIMC"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/btnAfficherMalade"
+        android:layout_toStartOf="@+id/btnAfficherMalade" />
 
     <Button
         android:text="Afficher Malade"
@@ -161,9 +165,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnAfficherMalade"
         android:layout_alignTop="@+id/btnAjoutMalade"
-        android:layout_toRightOf="@+id/btnAjoutMalade"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toLeftOf="@+id/btnCalculIMC"
+        android:layout_toStartOf="@+id/btnCalculIMC" />
 
     <RadioButton
         android:id="@+id/rdbProto1"
@@ -198,12 +201,12 @@
         android:id="@+id/editPoids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="number|numberDecimal" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/editTaille"
@@ -215,5 +218,26 @@
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="number|numberDecimal" />
+
+    <Button
+        android:id="@+id/btnCalculIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calcul IMC"
+        android:layout_alignBaseline="@+id/btnAfficherMalade"
+        android:layout_alignBottom="@+id/btnAfficherMalade"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/txtIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/btnAfficherMalade"
+        android:layout_alignLeft="@+id/btnCalculIMC"
+        android:layout_alignStart="@+id/btnCalculIMC" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class MaladesBDD {
-    private static final int VERSION_BDD = 2;
+    private static final int VERSION_BDD = 1;
     private static final String NOM_BDD = "bddMalades.db";
     private static final String TABLE_MALADES = "table_malades";
 
@@ -42,6 +42,7 @@ public class MaladesBDD {
         valeurs.put("NOM", unMalade.getNom());
         valeurs.put("PRENOM", unMalade.getPrenom());
         valeurs.put("GLYCEMIE", unMalade.getGlycemie());
+        valeurs.put("INSULINE", unMalade.getInsuline());
         valeurs.put("POIDS", unMalade.getPoids());
         valeurs.put("TAILLE", unMalade.getTaille());
         //on insère l'objet dans la BDD via le ContentValues
@@ -60,12 +61,13 @@ public class MaladesBDD {
         return nombre;
     }
 
+
     public ArrayList<Malade> getTousLesMalades() {
         ArrayList<Malade> LesMalades = new ArrayList<Malade>();
         Cursor leCurseur = bdd.rawQuery("select * from "+TABLE_MALADES, null);
         leCurseur.moveToFirst();
         while ( !leCurseur.isAfterLast()){
-            Malade malade = new Malade(leCurseur.getInt(0),leCurseur.getString(1),leCurseur.getString(2),Double.valueOf(leCurseur.getString(3)),Double.valueOf(leCurseur.getString(4)),Double.valueOf(leCurseur.getString(5)));
+            Malade malade = new Malade(leCurseur.getInt(0),leCurseur.getString(1),leCurseur.getString(2),Double.valueOf(leCurseur.getString(3)),leCurseur.getInt(4),Double.valueOf(leCurseur.getString(5)),Double.valueOf(leCurseur.getString(6)));
             LesMalades.add(malade);
             leCurseur.moveToNext();
         }

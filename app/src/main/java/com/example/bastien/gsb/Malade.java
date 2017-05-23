@@ -23,8 +23,10 @@ public class Malade implements Serializable{
     private String nom;
     private String prenom;
     private double glycemie;
+    private int insuline;
     private double poids;
     private double taille;
+
 
     /**
      * Constructeur classe Malade
@@ -32,13 +34,15 @@ public class Malade implements Serializable{
      * @param unPrenom String
      * @param uneGlycemie double
      */
-    public Malade(int id, String unNom, String unPrenom, double uneGlycemie, double unPoids, double uneTaille) {
+    public Malade(int id, String unNom, String unPrenom, double uneGlycemie, int qInsuline, double unPoids, double uneTaille) {
         this.id = id;
         this.nom = unNom;
         this.prenom = unPrenom;
         this.glycemie = uneGlycemie;
+        this.insuline = qInsuline;
         this.poids = unPoids;
         this.taille = uneTaille;
+
     }
 
 
@@ -94,7 +98,9 @@ public class Malade implements Serializable{
         return this.taille;
     }
 
-
+    public int getInsuline(){
+        return this.insuline;
+    }
     /**
      * Retourne le nom le prenom et la glycemie du malade pour l'affichage
      * @return nom String
@@ -102,6 +108,39 @@ public class Malade implements Serializable{
      * @return Glycemie double
      */
 
+    public String calculImc(double poids,double taille){
+        String retour ="";
+        double imc=poids/(taille*taille);
+
+        if(imc<16.5){
+            retour="famine";
+        }
+        if (imc>16.5 && imc<=18.5){
+            retour="maigreur";
+        }
+        if (imc>18.5 && imc<=25){
+            retour="corpulence normal";
+        }
+        if (imc>25 && imc<=30){
+            retour="surpoids";
+        }
+        if (imc>25 && imc<=30){
+            retour="surpoids";
+        }
+        if (imc>30 && imc<=35){
+            retour="obésité modérée";
+        }
+        if (imc>35 && imc<=40){
+            retour="obésité sévère";
+        }
+        if (imc>40){
+            retour="obésité morbide";
+        }
+        //else
+        //	retour="Erreur de IMC";
+
+        return (retour);
+    }
 
     public String getInfoPatient(){
         return  "ID : "+id +" "+"NOM: "+nom +"  " +prenom + "  "+"Glycemie: "+ glycemie +"  "+"Poids: "+poids+"  "+"Taille: "+taille;

@@ -16,6 +16,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     private static final String COL_NOM = "NOM";
     private static final String COL_PRENOM = "PRENOM";
     private static final String COL_GLYCEMIE = "GLYCEMIE";
+    private static final String COL_INSULINE = "INSULINE";
     private static final String COL_POIDS = "POIDS";
     private static final String COL_TAILLE = "TAILLE";
     public static final String CREATE_TABLE_MALADES = "CREATE TABLE "
@@ -24,6 +25,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
             + COL_NOM + " TEXT NOT NULL, "
             + COL_PRENOM + " TEXT NOT NULL, "
             + COL_GLYCEMIE + " TEXT NOT NULL, "
+            + COL_INSULINE + " TEXT NOT NULL, "
             + COL_POIDS + " TEXT NOT NULL, "
             + COL_TAILLE + " TEXT NOT NULL);";
 
@@ -35,6 +37,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Création des tables
+        //db.delete(TABLE_MALADES,null,null);
         db.execSQL(CREATE_TABLE_MALADES);
     }
 

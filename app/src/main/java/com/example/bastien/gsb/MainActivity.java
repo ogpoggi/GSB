@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private EditText editTaille;
     private Button btnAjoutMalade;
     private Button btnAfficherMalade;
+    private Button btnCalculIMC;
+    private TextView txtIMC;
     private Protocole leProtocole;
     public static MaladesBDD unMaladeBDD;
     private MapProtocoles uneMapProtocole;
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         editTaille = (EditText) findViewById(R.id.editTaille);
         btnAjoutMalade = (Button) findViewById(R.id.btnAjoutMalade);
         btnAfficherMalade = (Button) findViewById(R.id.btnAfficherMalade);
+
+        txtIMC = (TextView) findViewById(R.id.txtIMC);
+        btnCalculIMC = (Button) findViewById(R.id.btnCalculIMC);
+        btnCalculIMC.setOnClickListener(clickListenerbtnCalculIMC);
 
 
         btnGsb= (ImageButton) findViewById(R.id.btnGsb);
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     editTaille.setVisibility(View.VISIBLE);
                     btnAjoutMalade.setVisibility(View.VISIBLE);
                     btnAfficherMalade.setVisibility(View.VISIBLE);
+                    Toast.makeText(MainActivity.this,"Le malade doit être ajouté aux malades à signaler",Toast.LENGTH_LONG).show();
                 }
             }
             if(rdbProto2.isChecked()){
@@ -136,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     editTaille.setVisibility(View.VISIBLE);
                     btnAjoutMalade.setVisibility(View.VISIBLE);
                     btnAfficherMalade.setVisibility(View.VISIBLE);
+                    Toast.makeText(MainActivity.this,"Le malade doit être ajouté aux malades à signaler",Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -149,19 +157,34 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             String nom = editNomMalade.getText().toString();
             String prenom = editPrenomMalade.getText().toString();
             Double glyc = Double.parseDouble(editGlycemie.getText().toString());
+            int insu = Integer.parseInt(tvResInsuline.getText().toString());
             double poids = Double.parseDouble(editPoids.getText().toString());
             double taille = Double.parseDouble(editTaille.getText().toString());
-            Malade unMalade = new Malade(1,nom, prenom, glyc, poids, taille);
-            unMaladeBDD.ajoutMalade(unMalade);
-            Toast.makeText(MainActivity.this,"Le malade a été ajouté avec succés" +" : "+ String.valueOf(unMaladeBDD.
-                     nombreMalades())+" malades dans la base de données", Toast.LENGTH_SHORT).show();
-            Toast.makeText(MainActivity.this,"TESsT="+MaBaseSQLite.CREATE_TABLE_MALADES,Toast.LENGTH_SHORT).show();
-            editNomMalade.setText("");
-            editPrenomMalade.setText("");
-            editPoids.setText("");
-            editTaille.setText("");
+            if(nom.isEmpty() || prenom.isEmpty()){
+                Toast.makeText(MainActivity.this,"Tous les champs ne sont pas remplis",Toast.LENGTH_SHORT).show();
+            }else{
+                Malade unMalade = new Malade(1, nom, prenom, glyc,insu, poids, taille);
+                unMaladeBDD.ajoutMalade(unMalade);
+                Toast.makeText(MainActivity.this, "Le malade a été ajouté avec succés" + " : " + String.valueOf(unMaladeBDD.nombreMalades()) + " malades dans la base de données", Toast.LENGTH_SHORT).show();
+                editNomMalade.setText("");
+                editPrenomMalade.setText("");
+                editPoids.setText("");
+                editTaille.setText("");
+            }
         }
     };
+
+    private View.OnClickListener clickListenerbtnCalculIMC=new View.OnClickListener(){
+
+        public void onClick (View arg0){
+            Malade m =new Malade(1, editNomMalade.getText().toString(),editPrenomMalade.getText().toString(),Double.parseDouble(editGlycemie.getText().toString()),Integer.parseInt(tvResInsuline.getText().toString()),Double.parseDouble(editPoids.getText().toString()),Double.parseDouble(editTaille.getText().toString()));
+            double taille= Double.parseDouble(editTaille.getText().toString());
+            double poids= Double.parseDouble(editPoids.getText().toString());
+            String rep=m.calculImc(poids,taille);
+            txtIMC.setText(rep);
+        }
+    };
+
 
     private View.OnClickListener clickListenerBtnAfficherMalade = new View.OnClickListener() {
         @Override
